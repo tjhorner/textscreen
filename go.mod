@@ -1,4 +1,4 @@
-module github.com/tjhorner/TextScreen
+module github.com/tjhorner/textscreen
 
 go 1.14
 
