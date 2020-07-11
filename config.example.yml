@@ -1,0 +1,38 @@
+server:
+  # The port the server will listen on
+  port: "8080"
+
+storage:
+  # You can also store all conversations in-memory if you want by using "memory"
+  # adapter: "memory"
+  adapter: "redis"
+
+  # All the values below are only needed if the adapter is redis
+  # Hostname and port for your redis server
+  host: "localhost:6379"
+  # Password for your redis server, if any
+  password: ""
+  # Database number to use
+  db: 0
+
+twilio:
+  # Your Twilio SID
+  sid: ""
+  # Your Twilio token
+  token: ""
+  # Number from which the SMS messages will be sent
+  from_phone_number: ""
+  # The phone number you want to send screen results to
+  to_phone_number: ""
+
+responses:
+  # Will be sent in response to the first message
+  ask_for_name: "Hello! You've reached my message assistant. Before I connect you, may I ask for your name?"
+  # %s in this string is name. Didn't feel like using string templates lol
+  ask_for_purpose: "Hey %s! Now, to refresh my memory, where did we meet?"
+  # Will be sent when the conversation is complete
+  complete: "Thanks for the info! You can continue the conversation with me at XXX-XXX-XXXX."
+  # Sent on any unhandled error
+  error: "Something went wrong."
+  # Sent when the conversation is in a weird state (this should never happen)
+  unknown_state: "Hmm... I'm not sure how to respond to that."
