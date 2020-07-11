@@ -63,6 +63,11 @@ func (app *TextScreen) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 }
 
 func (app *TextScreen) Respond(form *url.Values, conversation *Conversation) string {
+	if form.Get("Body") == "" {
+		// edge case smh (people can send an MMS or something)
+		return ""
+	}
+
 	switch conversation.State {
 	case Started:
 		conversation.State = AskedForName
