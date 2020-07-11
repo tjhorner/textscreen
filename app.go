@@ -75,8 +75,9 @@ func (app *TextScreen) Respond(form *url.Values, conversation *Conversation) str
 			app.Config.Twilio.FromPhoneNumber,
 			app.Config.Twilio.ToPhoneNumber,
 			fmt.Sprintf(
-				"Starting SMS screen from %s",
+				"Starting SMS screen from %s: %s",
 				conversation.PhoneNumber,
+				form.Get("Body"),
 			), nil,
 		)
 		return app.Config.Responses.AskForName
