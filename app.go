@@ -81,10 +81,12 @@ func (app *TextScreen) Respond(form *url.Values, conversation *Conversation) str
 			), nil,
 		)
 		return app.Config.Responses.AskForName
+
 	case AskedForName:
 		conversation.Name = form.Get("Body")
 		conversation.State = AskedForPurpose
 		return fmt.Sprintf(app.Config.Responses.AskForPurpose, conversation.Name)
+
 	case AskedForPurpose:
 		conversation.Purpose = form.Get("Body")
 		conversation.State = Complete
@@ -99,6 +101,7 @@ func (app *TextScreen) Respond(form *url.Values, conversation *Conversation) str
 			), nil,
 		)
 		return app.Config.Responses.Complete
+
 	case Complete:
 		return ""
 	}
